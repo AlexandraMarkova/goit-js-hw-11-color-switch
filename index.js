@@ -12,14 +12,15 @@ const refs = {
     buttonStopRef: document.querySelector('button[data-action="stop"]'), 
 }
 
-refs.buttonStartRef.addEventListener("click", randomColorsStart)
-refs.buttonStopRef.addEventListener("click", randomColorsStop)
+refs.buttonStartRef.addEventListener("click", randomColorsStart);
+refs.buttonStopRef.addEventListener("click", randomColorsStop);
 
  
 let intervalId = null;
 
 function randomColorsStart() {
-    refs.buttonStartRef.removeEventListener("click", randomColorsStart);
+    // refs.buttonStartRef.removeEventListener("click", randomColorsStart);
+    refs.buttonStartRef.setAttribute("disabled", "true");
 
     const randomIntegerFromInterval = (min, max) => {
         return Math.floor(Math.random() * (max - min + 1) + min);
@@ -35,6 +36,7 @@ function randomColorsStart() {
 }
 
 function randomColorsStop() { 
-    refs.buttonStartRef.addEventListener("click", randomColorsStart)
+    // refs.buttonStartRef.addEventListener("click", randomColorsStart)
+     refs.buttonStartRef.removeAttribute("disabled");
     clearInterval(intervalId);
 }
